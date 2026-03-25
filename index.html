@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DOG PERRON — Premium Street & Lifestyle Apparel</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f4f4f4; color: #1a1a1a; }
+  .store { max-width: 1200px; margin: 0 auto; background: #fff; }
+
+  /* ── HEADER ── */
+  .header { background: #0d0d0d; color: #fff; padding: 0 2rem; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 24px rgba(0,0,0,0.5); }
+  .top-bar { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: #777; padding: 6px 0; border-bottom: 0.5px solid #222; letter-spacing: 1px; text-transform: uppercase; }
+  .top-bar span { display: flex; align-items: center; gap: 6px; }
+  .nav-main { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+  .logo { font-size: 26px; font-weight: 900; letter-spacing: 5px; color: #fff; text-decoration: none; text-transform: uppercase; }
+  .logo span { color: #e63946; }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a { color: #bbb; text-decoration: none; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: #e63946; }
+  .nav-actions { display: flex; gap: 14px; align-items: center; }
+  .nav-icon { background: none; border: none; color: #bbb; cursor: pointer; font-size: 17px; transition: color 0.2s; }
+  .nav-icon:hover { color: #fff; }
+  .cart-btn { background: #e63946; color: #fff; padding: 9px 22px; border-radius: 3px; font-weight: 800; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; }
+  .cart-btn:hover { background: #c1121f; }
+
+  /* ── HERO ── */
+  .hero { background: #0d0d0d; display: grid; grid-template-columns: 1fr 1fr; min-height: 580px; overflow: hidden; }
+  .hero-left { padding: 80px 56px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .hero-left::after { content: ''; position: absolute; right: 0; top: 10%; bottom: 10%; width: 1px; background: linear-gradient(transparent, #e63946, transparent); }
+  .hero-tag { display: inline-block; background: #e63946; color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; padding: 7px 20px; border-radius: 2px; margin-bottom: 28px; width: fit-content; }
+  .hero h1 { font-size: 56px; font-weight: 900; color: #fff; letter-spacing: 6px; text-transform: uppercase; line-height: 1.08; margin-bottom: 22px; }
+  .hero h1 span { color: #e63946; }
+  .hero-sub { font-size: 15px; color: #888; max-width: 420px; line-height: 1.9; letter-spacing: 0.3px; margin-bottom: 40px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: #e63946; color: #fff; padding: 15px 36px; border-radius: 3px; font-weight: 800; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.2s; }
+  .btn-primary:hover { background: #c1121f; transform: translateY(-1px); }
+  .btn-outline { background: transparent; color: #fff; padding: 15px 36px; border-radius: 3px; font-weight: 700; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; border: 1.5px solid #444; cursor: pointer; transition: all 0.2s; }
+  .btn-outline:hover { border-color: #e63946; color: #e63946; }
+  .hero-right { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; background: #111; }
+  .hero-img-box { overflow: hidden; position: relative; }
+  .hero-img-box img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; filter: brightness(0.85); }
+  .hero-img-box:hover img { transform: scale(1.06); filter: brightness(1); }
+  .hero-img-box.large { grid-row: 1 / 3; }
+  .hero-img-label { position: absolute; bottom: 10px; left: 12px; background: rgba(0,0,0,0.72); color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+
+  /* ── TRUST BAR ── */
+  .trust-bar { background: #e63946; padding: 13px 2rem; }
+  .trust-items { display: flex; justify-content: center; gap: 44px; flex-wrap: wrap; }
+  .trust-item { font-size: 11px; font-weight: 800; color: #fff; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 72px 2rem; }
+  .section-alt { background: #f7f6f3; }
+  .section-dark { background: #0d0d0d; color: #fff; }
+  .section-title { text-align: center; margin-bottom: 48px; }
+  .section-title h2 { font-size: 30px; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; color: inherit; }
+  .section-title p { color: #888; font-size: 14px; margin-top: 10px; letter-spacing: 0.5px; }
+  .section-dark .section-title p { color: #666; }
+  .red-line { width: 48px; height: 3px; background: #e63946; margin: 14px auto 0; border-radius: 2px; }
+
+  /* ── CATEGORY CARDS ── */
+  .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .cat-card { background: #0d0d0d; border-radius: 6px; overflow: hidden; cursor: pointer; position: relative; transition: transform 0.25s; }
+  .cat-card:hover { transform: translateY(-5px); }
+  .cat-card img { width: 100%; height: 210px; object-fit: cover; opacity: 0.7; display: block; transition: opacity 0.3s; }
+  .cat-card:hover img { opacity: 0.9; }
+  .cat-label { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.92)); padding: 30px 14px 14px; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; }
+  .cat-label span { display: block; font-size: 10px; color: #e63946; font-weight: 700; letter-spacing: 2px; margin-top: 3px; }
+
+  /* ── PRODUCT GRID ── */
+  .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .product-card { background: #fff; border: 1px solid #ebebeb; border-radius: 6px; overflow: hidden; transition: all 0.22s; cursor: pointer; }
+  .product-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,0,0,0.10); border-color: #ddd; }
+  .product-img-wrap { position: relative; overflow: hidden; }
+  .product-img { width: 100%; height: 250px; object-fit: cover; display: block; background: #f0ede8; transition: transform 0.3s; }
+  .product-card:hover .product-img { transform: scale(1.04); }
+  .product-badge { position: absolute; top: 10px; left: 10px; background: #e63946; color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+  .product-info { padding: 16px; }
+  .product-info h4 { font-size: 13px; font-weight: 700; color: #1a1a1a; margin-bottom: 8px; line-height: 1.45; min-height: 36px; }
+  .product-price { font-size: 16px; font-weight: 800; color: #e63946; }
+  .add-btn { display: block; width: 100%; background: #0d0d0d; color: #fff; border: none; padding: 11px; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 12px; border-radius: 3px; transition: background 0.2s; }
+  .add-btn:hover { background: #e63946; }
+
+  /* ── BRAND STRIP ── */
+  .brand-strip { background: #0d0d0d; padding: 48px 2rem; text-align: center; }
+  .brand-strip h2 { font-size: 48px; font-weight: 900; letter-spacing: 10px; color: #fff; text-transform: uppercase; }
+  .brand-strip h2 span { color: #e63946; }
+  .brand-strip p { font-size: 14px; color: #555; margin-top: 10px; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* ── FEATURES ── */
+  .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .feature-card { text-align: center; padding: 32px 20px; border: 1px solid #ebebeb; border-radius: 6px; transition: border-color 0.2s; }
+  .feature-card:hover { border-color: #e63946; }
+  .feature-icon { font-size: 32px; margin-bottom: 14px; display: block; }
+  .feature-card h4 { font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #1a1a1a; margin-bottom: 8px; }
+  .feature-card p { font-size: 13px; color: #888; line-height: 1.7; }
+
+  /* ── NEWSLETTER ── */
+  .newsletter { background: #f7f6f3; padding: 72px 2rem; text-align: center; }
+  .newsletter h2 { font-size: 28px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; }
+  .newsletter p { color: #888; font-size: 14px; margin-bottom: 30px; max-width: 460px; margin-left: auto; margin-right: auto; }
+  .email-form { display: flex; max-width: 460px; margin: 0 auto; border-radius: 3px; overflow: hidden; border: 1.5px solid #ddd; }
+  .email-form input { flex: 1; padding: 15px 20px; border: none; background: #fff; font-size: 14px; color: #1a1a1a; outline: none; font-family: inherit; }
+  .email-form button { background: #0d0d0d; color: #fff; border: none; padding: 15px 28px; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: background 0.2s; }
+  .email-form button:hover { background: #e63946; }
+
+  /* ── FOOTER ── */
+  .footer { background: #0a0a0a; color: #aaa; padding: 72px 2rem 28px; }
+  .footer-grid { display: grid; grid-template-columns: 2.2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-logo { font-size: 24px; font-weight: 900; letter-spacing: 5px; color: #fff; margin-bottom: 16px; display: block; text-transform: uppercase; }
+  .footer-logo span { color: #e63946; }
+  .footer-about { font-size: 13px; line-height: 1.9; color: #555; max-width: 280px; }
+  .footer-social { display: flex; gap: 10px; margin-top: 24px; }
+  .social-icon { width: 36px; height: 36px; border-radius: 50%; background: #161616; border: 0.5px solid #222; display: flex; align-items: center; justify-content: center; color: #666; font-size: 11px; font-weight: 800; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+  .social-icon:hover { background: #e63946; color: #fff; border-color: #e63946; }
+  .footer-col h4 { font-size: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a { color: #555; font-size: 13px; text-decoration: none; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: #e63946; }
+  .footer-bottom { border-top: 0.5px solid #161616; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 12px; color: #333; }
+  .footer-bottom a { color: #333; text-decoration: none; margin-left: 20px; }
+  .footer-bottom a:hover { color: #e63946; }
+
+  @media (max-width: 960px) {
+    .hero h1 { font-size: 42px; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 580px) {
+    .hero h1 { font-size: 30px; letter-spacing: 5px; }
+    .trust-items { gap: 18px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .brand-strip h2 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+<div class="store">
+
+  <!-- ===== HEADER ===== -->
+  <header class="header">
+    <div class="top-bar">
+      <span>&#10003; Free shipping on orders over $75</span>
+      <span>&#127381; New drops every week — stay fresh</span>
+      <span>&#10003; Secure checkout</span>
+    </div>
+    <nav class="nav-main">
+      <a href="#" class="logo">DOG <span>PERRON</span></a>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">T-Shirts</a></li>
+        <li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+        <li><a href="#">Women's</a></li>
+        <li><a href="#">Sale</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-icon">&#128269;</button>
+        <button class="nav-icon">&#128100;</button>
+        <button class="cart-btn">&#128722; Cart (0)</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">New Collection — 2026</div>
+      <h1>Dress Bold.<br><span>Live Free.</span></h1>
+      <p class="hero-sub">Premium unisex streetwear and lifestyle apparel built for those who express themselves without limits. Quality you can feel. Style you can own.</p>
+      <div class="hero-btns">
+        <button class="btn-primary">Shop the Collection</button>
+        <button class="btn-outline">View All Products</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-box large">
+        <img src="https://dogperron.myshopify.com/cdn/shop/files/all-over-print-recycled-unisex-zip-hoodie-white-front-69598f43de39f.jpg?v=1767477140&width=800" alt="DOG Wheels Zip Hoodie">
+        <span class="hero-img-label">Zip Hoodie — $97.50</span>
+      </div>
+      <div class="hero-img-box">
+        <img src="https://dogperron.myshopify.com/cdn/shop/files/all-over-print-recycled-unisex-sweatshirt-white-front-6959904e61eea.jpg?v=1767477362&width=600" alt="DOG Wheels Sweatshirt">
+        <span class="hero-img-label">Sweatshirt — $46.50</span>
+      </div>
+      <div class="hero-img-box">
+        <img src="https://dogperron.myshopify.com/cdn/shop/files/unisex-heavy-blend-hoodie-black-front-6959f1c59e2ec.jpg?v=1767502301&width=600" alt="Unisex Hoodie">
+        <span class="hero-img-label">Hoodie — $47.50</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="trust-bar">
+    <div class="trust-items">
+      <div class="trust-item">&#10003;&nbsp; Free Returns</div>
+      <div class="trust-item">&#10003;&nbsp; Premium Quality</div>
+      <div class="trust-item">&#10003;&nbsp; Worldwide Shipping</div>
+      <div class="trust-item">&#10003;&nbsp; Secure Checkout</div>
+      <div class="trust-item">&#10003;&nbsp; Unisex Sizing</div>
+    </div>
+  </div>
+
+  <!-- ===== SHOP BY CATEGORY ===== -->
+  <section class="section section-alt">
+    <div class="section-title">
+      <h2>Shop by Category</h2>
+      <p>Find your style — fresh drops across every category</p>
+      <div class="red-line"></div>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <img src="https://dogperron.myshopify.com/cdn/shop/files/unisex-basic-softstyle-t-shirt-black-front-695a0e04e92f0.jpg?v=1767509529&width=600" alt="T-Shirts">
+        <div class="cat-label">T-Shirts<span>Unisex &amp; Women's</span></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://dogperron.myshopify.com/cdn/shop/files/unisex-heavy-blend-hoodie-black-front-6959f1c59e2ec.jpg?v=1767502301&width=600" alt="Hoodies">
+        <div class="cat-label">Hoodies<span>Premium pullovers &amp; zip-ups</span></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://dogperron.myshopify.com/cdn/shop/files/unisex-crew-neck-sweatshirt-black-front-695a072e6b01c.jpg?v=1767507772&width=600" alt="Sweatshirts">
+        <div class="cat-label">Sweatshirts<span>Everyday comfort</span></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://dogperron.myshopify.com/cdn/shop/files/womens-basic-softstyle-t-shirt-black-front-695a0c06ddb09.jpg?v=1767509021&width=600" alt="Women's">
+        <div class="cat-label">Women's<span>Softstyle essentials</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BEST SELLERS ===== -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Best Sellers</h2>
+      <p>Our most loved pieces — flying off the shelves</p>
+      <div class="red-line"></div>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/unisex-heavy-blend-hoodie-black-front-6959f1c59e2ec.jpg?v=1767502301&width=600" alt="Unisex Hoodie">
+          <span class="product-badge">Best Seller</span>
+        </div>
+        <div class="product-info">
+          <h4>Unisex Heavy Blend Hoodie</h4>
+          <div class="product-price">$47.50</div>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/all-over-print-recycled-unisex-zip-hoodie-white-front-69598f43de39f.jpg?v=1767477140&width=600" alt="DOG Wheels Zip Hoodie">
+          <span class="product-badge">Premium</span>
+        </div>
+        <div class="product-info">
+          <h4>DOG Wheels Unisex Zip Hoodie</h4>
+          <div class="product-price">$97.50</div>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/all-over-print-recycled-unisex-sweatshirt-white-front-6959904e61eea.jpg?v=1767477362&width=600" alt="DOG Wheels Sweatshirt">
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info">
+          <h4>DOG Wheels Unisex Sweatshirt</h4>
+          <div class="product-price">$46.50</div>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/cotton-heritage-m2580-i-unisex-premium-pullover-hoodie-white-front-6959e8c55d529.jpg?v=1767499992&width=600" alt="SEA HWK Hoodie">
+        </div>
+        <div class="product-info">
+          <h4>SEA HWK Premium Pullover Hoodie</h4>
+          <div class="product-price">$34.00</div>
+          <button class="add-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRAND STRIP ===== -->
+  <div class="brand-strip">
+    <h2>DOG <span>PERRON</span></h2>
+    <p>Premium streetwear &nbsp;·&nbsp; Unisex &amp; Women's &nbsp;·&nbsp; Worldwide Shipping</p>
+  </div>
+
+  <!-- ===== FULL COLLECTION ===== -->
+  <section class="section section-alt">
+    <div class="section-title">
+      <h2>Full Collection</h2>
+      <p>All 12 products — something for everyone</p>
+      <div class="red-line"></div>
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/unisex-basic-softstyle-t-shirt-black-front-695a0e04e92f0.jpg?v=1767509529&width=500" alt="COW T-Shirt">
+        </div>
+        <div class="product-info"><h4>COW Short-Sleeve Unisex T-Shirt</h4><div class="product-price">$15.00</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/unisex-v-neck-tee-athletic-heather-front-695a102892529.jpg?v=1767510078&width=500" alt="COW V-Neck">
+        </div>
+        <div class="product-info"><h4>COW Unisex V-Neck T-Shirt</h4><div class="product-price">$21.00</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/all-over-print-recycled-unisex-sweatshirt-white-front-6959904e61eea.jpg?v=1767477362&width=500" alt="DOG Wheels Sweatshirt">
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info"><h4>DOG Wheels Unisex Sweatshirt</h4><div class="product-price">$46.50</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/all-over-print-recycled-unisex-zip-hoodie-white-front-69598f43de39f.jpg?v=1767477140&width=500" alt="DOG Wheels Zip Hoodie">
+          <span class="product-badge">Premium</span>
+        </div>
+        <div class="product-info"><h4>DOG Wheels Unisex Zip Hoodie</h4><div class="product-price">$97.50</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/unisex-classic-tee-black-front-6976e185b04a0.jpg?v=1769398690&width=500" alt="La Costa NFC Shirt">
+        </div>
+        <div class="product-info"><h4>La Costa NFC Champ Shirt</h4><div class="product-price">$12.96</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/unisex-crew-neck-sweatshirt-black-front-695a072e6b01c.jpg?v=1767507772&width=500" alt="MIX Sweatshirt">
+        </div>
+        <div class="product-info"><h4>MIX Unisex Crewneck Sweatshirt</h4><div class="product-price">$28.00</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/cotton-heritage-m2580-i-unisex-premium-pullover-hoodie-white-front-6959e8c55d529.jpg?v=1767499992&width=500" alt="SEA HWK Hoodie">
+        </div>
+        <div class="product-info"><h4>SEA HWK Premium Pullover Hoodie</h4><div class="product-price">$34.00</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/lat-unisex-fine-jersey-tee---6901-black-front-6959eb294d77f.jpg?v=1767500605&width=500" alt="Fine Jersey Tee">
+        </div>
+        <div class="product-info"><h4>Unisex Fine Jersey Tee</h4><div class="product-price">$15.00</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/unisex-heavy-blend-hoodie-black-front-6959f1c59e2ec.jpg?v=1767502301&width=500" alt="Unisex Hoodie">
+          <span class="product-badge">Best Seller</span>
+        </div>
+        <div class="product-info"><h4>Unisex Heavy Blend Hoodie</h4><div class="product-price">$47.50</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/unisex-v-neck-tee-navy-left-front-695af4922aa6f.jpg?v=1767568545&width=500" alt="Unisex V-Neck">
+        </div>
+        <div class="product-info"><h4>Unisex Short Sleeve V-Neck T-Shirt</h4><div class="product-price">$21.00</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/womens-basic-softstyle-t-shirt-black-front-695a0c06ddb09.jpg?v=1767509021&width=500" alt="Women's T-Shirt Black">
+        </div>
+        <div class="product-info"><h4>Women's Softstyle T-Shirt — Black</h4><div class="product-price">$14.50</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://dogperron.myshopify.com/cdn/shop/files/womens-basic-softstyle-t-shirt-white-front-695a10eb05fb1.jpg?v=1767510267&width=500" alt="Women's T-Shirt White">
+        </div>
+        <div class="product-info"><h4>Women's Softstyle T-Shirt — White</h4><div class="product-price">$13.50</div><button class="add-btn">Add to Cart</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY SHOP WITH US ===== -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Why Dog Perron</h2>
+      <p>Built different. Made for those who don't follow the crowd.</p>
+      <div class="red-line"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">&#128293;</span>
+        <h4>Bold Designs</h4>
+        <p>Every piece is crafted to stand out. Graphic prints and clean cuts that speak for themselves.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#9851;</span>
+        <h4>Premium Materials</h4>
+        <p>Soft, durable fabrics built to last. From everyday tees to heavyweight hoodies — quality first.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#127758;</span>
+        <h4>Worldwide Shipping</h4>
+        <p>We ship fast to your door no matter where you are. Tracking included on every order.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">&#128257;</span>
+        <h4>Easy Returns</h4>
+        <p>Not satisfied? We make returns simple and stress-free. Your satisfaction is our priority.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER ===== -->
+  <section class="newsletter">
+    <h2>Stay in the Loop</h2>
+    <p>Get exclusive deals, early access to new drops, and style inspiration delivered straight to your inbox.</p>
+    <div class="email-form">
+      <input type="email" placeholder="Enter your email address">
+      <button>Subscribe</button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <span class="footer-logo">DOG <span>PERRON</span></span>
+        <p class="footer-about">Premium streetwear and lifestyle apparel for those who dare to be different. Bold designs. Quality materials. Made for everyone.</p>
+        <div class="footer-social">
+          <a class="social-icon" href="#" target="_blank">ig</a>
+          <a class="social-icon" href="#" target="_blank">fb</a>
+          <a class="social-icon" href="#" target="_blank">tw</a>
+          <a class="social-icon" href="#" target="_blank">yt</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">T-Shirts</a></li>
+          <li><a href="#">Hoodies</a></li>
+          <li><a href="#">Sweatshirts</a></li>
+          <li><a href="#">Women's</a></li>
+          <li><a href="#">Sale</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns &amp; Exchanges</a></li>
+          <li><a href="#">Size Guide</a></li>
+          <li><a href="#">Track Your Order</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Refund Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Dog Perron. All rights reserved. Premium streetwear for the bold.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
